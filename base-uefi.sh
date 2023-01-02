@@ -41,7 +41,7 @@ echo root:password | chpasswd
 # pacman -S --noconfirm xf86-video-amdgpu
 # pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinux #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
 
 grub-mkconfig -o /boot/grub/grub.cfg
 

@@ -14,20 +14,24 @@ mount /dev/nvme0n1p3 /mnt
 
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
-btrfs subvolume create /mnt/@cache
-btrfs subvolume create /mnt/@log
+btrfs subvolume create /mnt/@var
+btrfs subvolume create /mnt/@opt
+btrfs subvolume create /mnt/@tmp
+btrfs subvolume create /mnt/@srv
 btrfs subvolume create /mnt/@.snapshots
 
 umount -l /mnt
 
 mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@ /dev/nvme0n1p3 /mnt
 
-mkdir -p /mnt/{boot/efi,home,var/cache,var/log,.snapshots}
+mkdir -p /mnt/{boot/efi,home,var,opt,tmp,srv,.snapshots}
 
-mount -o noatime,compress=zstd:1,ssd,discard=async,space_cache=v2,subvol=@home /dev/nvme0n1p3 /mnt/home
-mount -o noatime,compress=zstd:1,ssd,discard=async,space_cache=v2,subvol=@cache /dev/nvme0n1p3 /mnt/var/cache
-mount -o noatime,compress=zstd:1,ssd,discard=async,space_cache=v2,subvol=@log /dev/nvme0n1p3 /mnt/var/log
-mount -o noatime,compress=zstd:1,ssd,discard=async,space_cache=v2,subvol=@.snapshots /dev/nvme0n1p3 /mnt/.snapshots
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@home /dev/nvme0n1p3 /mnt/home
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@var /dev/nvme0n1p3 /mnt/var
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@opt /dev/nvme0n1p3 /mnt/opt
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@tmp /dev/nvme0n1p3 /mnt/tmp
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@srv /dev/nvme0n1p3 /mnt/srv
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@.snapshots /dev/nvme0n1p3 /mnt/.snapshots
 
 mount /dev/nvme0n1p1 /mnt/boot/efi
 

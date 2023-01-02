@@ -1,3 +1,4 @@
+base-devel
 grub-btrfs
 base-devel
 efibootmgr
@@ -29,3 +30,4 @@ upower
 man-db
 man-pages
 zsh
+xorg
